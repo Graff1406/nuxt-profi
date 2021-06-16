@@ -245,15 +245,17 @@
 </template>
 <script>
 import LoginForm from '@/components/sign/LoginForm'
+import setStepQueryForCreateTask from '@/mixins/setStepQueryForCreateTask'
   export default {
     name: 'TaskForm',
     components: {
       LoginForm,
     },
+    mixins: [setStepQueryForCreateTask],
     data() {
       return {
         userLoged: false,
-        step: 0,
+        step: this.$route.query.step,
         tab: null,
         timeTab: null,
         date: '',
@@ -289,9 +291,9 @@ import LoginForm from '@/components/sign/LoginForm'
         if (to.query.step < from.query.step) this.step--
       }
     },
-    created() {
-      this.setRouteQuery()
-    },
+    // created() {
+    //   this.setStepQuery(this.step)
+    // },
     methods: {
       onResize() {
         this.windowSize = { x: window.innerWidth, y: window.innerHeight }
@@ -300,19 +302,10 @@ import LoginForm from '@/components/sign/LoginForm'
         this.showTelForm = e
       },
       setStep(degre) {
-        if (this.$device.isDesktop) {
-          degre ? this.step++ : this.step--
-        } else {
-          this.step++
-          this.setRouteQuery()
-        }
+        if (this.$device.isDesktop)  degre ? this.step++ : this.step--
+        else this.step++
+        this.setStepQuery(this.step)
       },
-      setRouteQuery() {
-        this.$router.push({
-          path: this.$route.path,
-          query: { step: this.step }
-        })
-      }
     },
   }
 </script>

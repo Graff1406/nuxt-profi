@@ -12,7 +12,7 @@
       <v-icon>home</v-icon>
     </v-btn>
 
-    <v-btn to="/create-task">
+    <v-btn to="/create-task?step=0">
       <span>Add task</span>
 
       <v-icon>add_circle_outline</v-icon>

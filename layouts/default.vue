@@ -5,7 +5,13 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn v-if="$device.isMobile" icon class="mx-2" color="black" @click="dialog = true">
+      <v-btn
+        v-if="$device.isMobile"
+        icon
+        class="mx-2"
+        color="black"
+        @click="dialog = true"
+      >
         <v-icon>search</v-icon>
       </v-btn>
 
@@ -18,41 +24,28 @@
         <v-btn class="mx-2" depressed to="/login">
           Sign
         </v-btn>
-        <v-btn depressed color="error" to="/create-task">
+        <v-btn depressed color="secondary" to="/create-task?step=0">
           Create task
         </v-btn>
       </template>
     </v-app-bar>
     <v-main>
       <v-container fluid>
-      <Nuxt />
+        <Nuxt />
       </v-container>
       <SearchModal :active.sync="dialog" />
     </v-main>
     <BottomNavigation defaultBtnInde="0" />
-    <v-footer
-      v-if="$device.isDesktop"
-      dark
-      padless
-    >
-      <v-card
-        class="flex"
-        flat
-        dark
-        tile
-      >
+    <v-footer v-if="$device.isDesktop" dark padless>
+      <v-card class="flex" flat dark tile>
         <v-card-title class="grey darken-4">
-          <strong class="subheading">Get connected with us on social networks!</strong>
+          <strong class="subheading"
+            >Get connected with us on social networks!</strong
+          >
 
           <v-spacer></v-spacer>
 
-          <v-btn
-            v-for="icon in icons"
-            :key="icon"
-            class="mx-4"
-            dark
-            icon
-          >
+          <v-btn v-for="icon in icons" :key="icon" class="mx-4" dark icon>
             <v-icon size="24px">
               {{ icon }}
             </v-icon>
@@ -67,8 +60,8 @@
   </v-app>
 </template>
 <script>
-import SearchModal from '@/components/search/modal/SearchModal'
-import BottomNavigation from '@/components/BottomNavigation'
+import SearchModal from "@/components/search/modal/SearchModal";
+import BottomNavigation from "@/components/BottomNavigation";
 
 export default {
   components: {
@@ -79,13 +72,8 @@ export default {
     return {
       dialog: false,
       bottomNavigation: 0,
-      icons: [
-        'mdi-facebook',
-        'mdi-twitter',
-        'mdi-linkedin',
-        'mdi-instagram',
-      ],
-    }
-  },
-}
+      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"]
+    };
+  }
+};
 </script>
