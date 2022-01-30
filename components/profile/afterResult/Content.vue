@@ -10,7 +10,7 @@
             dense
             half-increments
             readonly
-            size="14"
+            size="25"
           ></v-rating>
 
           <div class="grey--text ms-4">4.5 (413)</div>
@@ -28,6 +28,30 @@
     </v-card>
     <v-card flat>
       <v-card-title>Working time</v-card-title>
+      <v-card-text>
+        <div class="my-4 text-subtitle-1">
+          Italian, Cafe
+        </div>
+      </v-card-text>
+    </v-card>
+    <v-card flat>
+      <v-card-title>Sub services</v-card-title>
+      <v-card-text>
+        <div class="my-4 text-subtitle-1">
+          Italian, Cafe
+        </div>
+      </v-card-text>
+    </v-card>
+    <v-card flat>
+      <v-card-title>Desctiptions</v-card-title>
+      <v-card-text>
+        <div class="my-4 text-subtitle-1">
+          Italian, Cafe
+        </div>
+      </v-card-text>
+    </v-card>
+    <v-card flat>
+      <v-card-title>Reviews</v-card-title>
       <v-card-text>
         <div class="my-4 text-subtitle-1">
           Italian, Cafe

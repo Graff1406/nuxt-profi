@@ -16,7 +16,9 @@ import Logo from '@/components/Logo'
     name: 'login',
     layout: 'login',
     components: {
-      Logo,
+      Logo,""
+      Logo,""
+      Logo,""
       LoginForm,
     }
   }

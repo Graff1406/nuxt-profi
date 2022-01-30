@@ -51,7 +51,7 @@
       </v-container>
       <SearchModal :active.sync="dialog" />
     </v-main>
-    <v-app-bar bottom fixed elevation="1" color="white">
+    <v-app-bar bottom fixed elevation="2" color="white" dark>
       <v-row justify="center" class="pa-0">
         <v-col cols="8">
           <v-row>
@@ -59,14 +59,7 @@
               <BtnsFavoriteAndShare color="secondary" />
             </v-col>
             <v-col cols="6" class="d-flex justify-end align-center pa-0">
-              <v-btn color="secondary" text>
-                <v-icon class="mr-3">phone_in_talk</v-icon>
-                Call
-              </v-btn>
-              <v-btn color="secondary" text>
-                <v-icon class="mr-3">question_answer</v-icon>
-                Chat
-              </v-btn>
+              <BtnsCallAndShare />
             </v-col>
           </v-row>
         </v-col>
@@ -77,11 +70,13 @@
 <script>
 import SearchModal from "@/components/search/modal/SearchModal";
 import BtnsFavoriteAndShare from "@/components/tile/BtnsFavoriteAndShare";
+import BtnsCallAndShare from "@/components/tile/BtnsCallAndShare";
 
 export default {
   components: {
     SearchModal,
-    BtnsFavoriteAndShare
+    BtnsFavoriteAndShare,
+    BtnsCallAndShare
   },
   data() {
     return {
