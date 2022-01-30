@@ -10,18 +10,16 @@
   </v-row>
 </template>
 <script>
-import LoginForm from '@/components/sign/LoginForm'
-import Logo from '@/components/Logo'
-  export default {
-    name: 'login',
-    layout: 'login',
-    components: {
-      Logo,""
-      Logo,""
-      Logo,""
-      LoginForm,
-    }
+import LoginForm from "@/components/sign/LoginForm";
+import Logo from "@/components/Logo";
+export default {
+  name: "login",
+  layout: "login",
+  components: {
+    Logo,
+    LoginForm
   }
+};
 </script>
 <style scoped>
 .main {
