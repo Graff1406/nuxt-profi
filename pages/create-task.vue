@@ -5,11 +5,6 @@
         <Logo v-if="$device.isDesktop" show-icon />
       </v-row>
       <TaskForm />
-      <!-- <LoginForm /> -->
-      <!-- <login-form>
-        <template v-slot:logo>
-        </template>
-      </login-form> -->
     </v-col>
   </v-row>
 </template>

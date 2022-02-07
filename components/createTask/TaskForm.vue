@@ -1,9 +1,14 @@
 <template>
   <v-row v-resize="onResize">
     <v-col class="pa-0">
-      <v-card :outlined="$device.isDesktop" :flat="$device.isMobile" :height="windowSize.y - 80" class="d-flex flex-column justify-space-between">
+      <v-card
+        :outlined="$device.isDesktop"
+        :flat="$device.isMobile"
+        :height="windowSize.y - 80"
+        class="d-flex flex-column justify-space-between"
+      >
         <v-card-text class="pa-0">
-          <section v-show="userLoged || showTelForm" >
+          <section v-show="userLoged || showTelForm">
             <h5 class="d-flex align-center justify-center success--text my-2">
               Your Loged
               <v-icon color="success" size="18" class="mx-2">check</v-icon>
@@ -72,35 +77,48 @@
                 </v-card-title>
                 <v-card-text>
                   <v-card flat>
-                    <v-tabs
-                      v-model="tab"
-                      color="seconday"
-                      centered
-                    >
-                      <v-tab>{{ date || 'Date' }}</v-tab>
+                    <v-tabs v-model="tab" color="seconday" centered>
+                      <v-tab>{{ date || "Date" }}</v-tab>
                       <v-tab :disabled="!date">Time</v-tab>
 
                       <v-tab-item class="py-2">
-                        <v-date-picker v-model="date" color="secondary" @change="tab++" no-title></v-date-picker>
+                        <v-date-picker
+                          v-model="date"
+                          color="secondary"
+                          @change="tab++"
+                          no-title
+                        ></v-date-picker>
                       </v-tab-item>
-                        
+
                       <v-tab-item class="py-2">
-                        <v-tabs
-                          v-model="timeTab"
-                          color="seconday"
-                          centered
-                        >
+                        <v-tabs v-model="timeTab" color="seconday" centered>
                           <v-tab>
-                            {{ time.start || 'Start' }}
+                            {{ time.start || "Start" }}
                           </v-tab>
-                          <v-tab :disabled="!time.start">{{ time.end || 'End' }}</v-tab>
+                          <v-tab :disabled="!time.start">{{
+                            time.end || "End"
+                          }}</v-tab>
 
                           <v-tab-item class="py-2">
-                            <v-time-picker v-model="time.start" format="24hr" color="secondary" @change="timeTab++" scrollable no-title></v-time-picker>
+                            <v-time-picker
+                              v-model="time.start"
+                              format="24hr"
+                              color="secondary"
+                              @change="timeTab++"
+                              scrollable
+                              no-title
+                            ></v-time-picker>
                           </v-tab-item>
-                            
+
                           <v-tab-item class="py-2">
-                            <v-time-picker v-model="time.end" format="24hr" color="secondary" :min="time.start" scrollable no-title></v-time-picker>
+                            <v-time-picker
+                              v-model="time.end"
+                              format="24hr"
+                              color="secondary"
+                              :min="time.start"
+                              scrollable
+                              no-title
+                            ></v-time-picker>
                           </v-tab-item>
                         </v-tabs>
                       </v-tab-item>
@@ -114,7 +132,9 @@
             <v-window-item :value="3" v-if="!userLoged">
               <v-card flat>
                 <v-card-title primary-title>
-                  {{ showTelForm ? 'Add phone number' : 'Sign In before Publish' }}
+                  {{
+                    showTelForm ? "Add phone number" : "Sign In before Publish"
+                  }}
                 </v-card-title>
                 <v-card-text>
                   <section v-if="showTelForm">
@@ -168,30 +188,26 @@
                     </article>
                     <article>
                       <h4>Time (from - to)</h4>
-                      <p>{{ time.start + ' - ' + time.end }}</p>
+                      <p>{{ time.start + " - " + time.end }}</p>
                     </article>
                     <article>
                       <h4>Phone numbers</h4>
-                      <p v-for="phone in phones" :key="phone">{{phone}}</p>
+                      <p v-for="phone in phones" :key="phone">{{ phone }}</p>
                     </article>
                   </section>
                 </v-card-text>
               </v-card>
             </v-window-item>
           </v-window>
-          </v-card-text>
+        </v-card-text>
         <v-card-actions v-if="$device.isDesktop">
-          <v-btn
-            depressed
-            :disabled="!step"
-            @click="setStep()"
-          >
+          <v-btn depressed :disabled="!step" @click="setStep()">
             <v-icon>arrow_back_ios</v-icon>
             Preview
           </v-btn>
           <v-spacer></v-spacer>
           <v-btn
-            v-if="step < 3 || step < 4 && !userLoged"
+            v-if="step < 3 || (step < 4 && !userLoged)"
             depressed
             :disabled="nextDisabled"
             @click="setStep(true)"
@@ -210,12 +226,7 @@
           </v-btn>
         </v-card-actions>
         <v-card-actions v-else>
-          <v-btn
-            dark
-            depressed
-            block
-            @click="setStep"
-          >
+          <v-btn dark depressed block @click="setStep">
             Continue
             <v-icon>arrow_forward_ios</v-icon>
           </v-btn>
@@ -244,68 +255,70 @@
   </v-row>
 </template>
 <script>
-import LoginForm from '@/components/sign/LoginForm'
-import setStepQueryForCreateTask from '@/mixins/setStepQueryForCreateTask'
-  export default {
-    name: 'TaskForm',
-    components: {
-      LoginForm,
-    },
-    mixins: [setStepQueryForCreateTask],
-    data() {
-      return {
-        userLoged: false,
-        step: this.$route.query.step,
-        tab: null,
-        timeTab: null,
-        date: '',
-        time: {
-          start: '',
-          end: ''
-        },
-        items: ['Batumi'],
-        value: null,
-        title: '',
-        detales: '',
-        city: '',
-        area: '',
-        address: '',
-        windowSize: {
-          x: 0,
-          y: 0,
-        },
-        showTelForm: false,
-        phones: [null, null]
-      }
-    },
-    computed: {
-      nextDisabled() {
-        return (this.step === 0 && !this.title) ||
+import LoginForm from "@/components/sign/LoginForm";
+import setStepQueryForCreateTask from "@/mixins/setStepQueryForCreateTask";
+export default {
+  name: "TaskForm",
+  components: {
+    LoginForm
+  },
+  mixins: [setStepQueryForCreateTask],
+  data() {
+    return {
+      userLoged: false,
+      step: this.$route.query.step,
+      tab: null,
+      timeTab: null,
+      date: "",
+      time: {
+        start: "",
+        end: ""
+      },
+      items: ["Batumi"],
+      value: null,
+      title: "",
+      detales: "",
+      city: "",
+      area: "",
+      address: "",
+      windowSize: {
+        x: 0,
+        y: 0
+      },
+      showTelForm: false,
+      phones: [null, null]
+    };
+  },
+  computed: {
+    nextDisabled() {
+      return (
+        (this.step === 0 && !this.title) ||
         (this.step === 1 && !this.city) ||
         (this.step === 2 && !this.date) ||
         (this.step === 3 && !this.userLoged && !this.showTelForm)
-      },
+      );
+    }
+  },
+  watch: {
+    $route(to, from) {
+      if (to.query.step < from.query.step) this.step--;
+    }
+  },
+  // created() {
+  //   this.setStepQuery(this.step)
+  // },
+  methods: {
+    onResize() {
+      this.windowSize = { x: window.innerWidth, y: window.innerHeight };
     },
-    watch: {
-      $route(to, from) {
-        if (to.query.step < from.query.step) this.step--
-      }
+    loginUser(e) {
+      this.showTelForm = e;
     },
-    // created() {
-    //   this.setStepQuery(this.step)
-    // },
-    methods: {
-      onResize() {
-        this.windowSize = { x: window.innerWidth, y: window.innerHeight }
-      },
-      loginUser(e) {
-        this.showTelForm = e
-      },
-      setStep(degre) {
-        if (this.$device.isDesktop)  degre ? this.step++ : this.step--
-        else this.step++
-        this.setStepQuery(this.step)
-      },
-    },
+    setStep(degre) {
+      if (this.$device.isDesktop) degre ? this.step++ : this.step--;
+      else this.step++;
+      this.setStepQuery(this.step);
+    }
   }
+};
 </script>

@@ -12,7 +12,7 @@
 import BottomNavigation from "@/components/BottomNavigation";
 
 export default {
-  name: "login",
+  name: "MobileTabletDesktopLogin",
   components: {
     BottomNavigation
   }

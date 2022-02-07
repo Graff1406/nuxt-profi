@@ -15,7 +15,7 @@
 import LoginForm from "@/components/sign/LoginForm";
 import Logo from "@/components/Logo";
 export default {
-  layout: "login",
+  layout: "MobileTabletDesktopLogin",
   components: {
     Logo,
     LoginForm

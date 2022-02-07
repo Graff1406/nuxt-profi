@@ -1,7 +1,6 @@
 <template>
   <v-container>
-    <!-- <v-divider></v-divider> -->
-    <v-row justify="center" class="py-3" v-if="!$device.isMobile">
+    <v-row justify="center" class="py-3">
       <v-col sm="11" md="9">
         <banner
           title="Find a master"
@@ -9,7 +8,7 @@
         >
           <template #actions>
             <div class="ml-2 mb-2">
-              <v-btn color="#5b5a5a" outlined>Find master</v-btn>
+              <v-btn color="#5b5a5a" outlined to="/search">Find master</v-btn>
             </div>
           </template>
         </banner>
@@ -22,7 +21,9 @@
         >
           <template #actions>
             <div class="ml-2 mb-2">
-              <v-btn color="#5b5a5a" outlined>Create task</v-btn>
+              <v-btn color="#5b5a5a" outlined to="/create-task"
+                >Create task</v-btn
+              >
             </div>
           </template>
         </banner>
@@ -35,22 +36,43 @@
         >
           <template #actions>
             <div class="ml-2 mb-2">
-              <v-btn color="error" outlined>Join master</v-btn>
+              <v-btn color="error" outlined to="/login?role=master"
+                >Join master</v-btn
+              >
             </div>
           </template>
         </banner>
       </v-col>
     </v-row>
-
-    <!-- <v-row justify="center" class="py-3">
-      <v-col sm="11" md="9" class="pa-0">
-        <SliderMasters />
-      </v-col>
-
-    </v-row> -->
     <v-row justify="center" class="py-3">
       <v-col sm="11" md="9">
         <ScrollLineMasters />
+      </v-col>
+    </v-row>
+
+    <v-row justify="center" class="py-3">
+      <v-btn color="secondary" outlined to="/search?search=all">See All</v-btn>
+    </v-row>
+
+    <v-row justify="center" class="py-3">
+      <v-col sm="11" md="9">
+        <v-divider></v-divider>
+      </v-col>
+    </v-row>
+
+    <v-row justify="center">
+      <v-col sm="11" md="9">
+        <v-card flat>
+          <v-card-title>How are we useful to society?</v-card-title>
+        </v-card>
+        <v-card-text>
+          This resource is intended to facilitate the search for the specialist
+          you need. We do our best to ensure that the quality of the services
+          provided is at a high level. It is not always possible to accurately
+          determine the level of training of a specialist and what he wrote in
+          his resume. It is important for us to be in touch with our users in
+          order to improve the quality of the services provided.</v-card-text
+        >
       </v-col>
     </v-row>
 
@@ -227,7 +249,8 @@ import SliderMasters from "@/components/sliders/Masters";
 import ScrollLineMasters from "@/components/ScrollLineMasters";
 
 export default {
-  layout: ({ route }) => (route.query?.search ? "resultMobile" : "default"),
+  layout: ({ $device }) =>
+    $device.isMobile ? "MobileList" : "TabletDesktopList",
   components: {
     Banner,
     SliderMasters,
