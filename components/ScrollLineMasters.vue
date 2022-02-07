@@ -6,12 +6,9 @@
   </v-row>
 </template>
 <script>
-import TileForDesktop from "@/components/Tile/TileForDesktop";
+import TileForDesktop from "@/components/tile/TileForDesktop";
 export default {
-  name: "",
-  layout(context) {
-    return context.$device.isMobile ? "resultMobile" : "resultDesktop";
-  },
+  name: "ScrollLineMasters",
   components: {
     TileForDesktop
   }

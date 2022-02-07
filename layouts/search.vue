@@ -1,42 +1,13 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="white"
-      hide-on-scroll
-      :elevate-on-scroll="$device.isDesktop"
-    >
-      <Logo is-desktop without-link />
-
-      <v-spacer></v-spacer>
-
-      <template v-if="$device.isMobile">
-        <!-- <div v-if="$route.query.search">
-          <v-btn icon color="black" @click="sheet = true">
-            <v-icon>filter_list</v-icon>
-          </v-btn>
-        </div> -->
-        <!-- <v-btn icon color="black"> <v-icon>how_to_reg</v-icon></v-btn> -->
-      </template>
-      <v-btn v-else depressed @click="dialog = true">
-        <v-icon class="px-2">search</v-icon>
-        Find master
-      </v-btn>
-
-      <template v-if="$device.isDesktop">
-        <v-btn class="mx-2" depressed to="/login">
-          Sign
-        </v-btn>
-        <v-btn depressed to="/create-task?step=0">
-          Create task
-        </v-btn>
-      </template>
+    <v-app-bar app color="white" :elevate-on-scroll="$device.isDesktop">
+      <MainSearch v-if="$device.isMobile" :focus="active" :value="value" />
     </v-app-bar>
     <v-main>
       <v-container fluid>
         <Nuxt />
       </v-container>
-      <SearchModal :active.sync="dialog" />
+      <!-- <SearchModal :active.sync="dialog" /> -->
     </v-main>
     <BottomNavigation v-if="$device.isMobile" />
     <v-footer v-if="$device.isDesktop" dark padless>
@@ -63,6 +34,7 @@
   </v-app>
 </template>
 <script>
+import MainSearch from "../components/search/MainSearch.vue";
 import SearchModal from "@/components/search/modal/SearchModal";
 import BottomNavigation from "@/components/BottomNavigation";
 import Logo from "@/components/Logo";
@@ -72,7 +44,12 @@ export default {
   components: {
     SearchModal,
     BottomNavigation,
-    Logo
+    Logo,
+    MainSearch
+  },
+  props: {
+    active: Boolean,
+    value: String
   },
   data() {
     return {

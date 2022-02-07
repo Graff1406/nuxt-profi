@@ -3,7 +3,9 @@
     <v-col sm="6" md="5" lg="4">
       <login-form>
         <template v-slot:logo>
-          <Logo />
+          <v-row justify="center" class="title pb-3">
+            <Logo v-if="$device.isDesktop" show-icon />
+          </v-row>
         </template>
       </login-form>
     </v-col>
@@ -13,7 +15,6 @@
 import LoginForm from "@/components/sign/LoginForm";
 import Logo from "@/components/Logo";
 export default {
-  name: "login",
   layout: "login",
   components: {
     Logo,

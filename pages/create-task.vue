@@ -1,7 +1,9 @@
 <template>
   <v-row justify="center" class="mt-2 main">
     <v-col sm="7" md="6" lg="5">
-      <Logo v-if="$device.isDesktop" />
+      <v-row justify="center" class="title pb-3">
+        <Logo v-if="$device.isDesktop" show-icon />
+      </v-row>
       <TaskForm />
       <!-- <LoginForm /> -->
       <!-- <login-form>
@@ -12,23 +14,23 @@
   </v-row>
 </template>
 <script>
-import LoginForm from '@/components/sign/LoginForm'
-import TaskForm from '@/components/createTask/TaskForm'
-import Logo from '@/components/Logo'
-  export default {
-    name: 'createTask',
-    layout: context => context.$device.isMobile ? 'createTask' : 'login',
-    components: {
-      Logo,
-      LoginForm,
-      TaskForm
-    },
-    computed: {
-      userLoged() {
-        return false
-      }
+import LoginForm from "@/components/sign/LoginForm";
+import TaskForm from "@/components/createTask/TaskForm";
+import Logo from "@/components/Logo";
+export default {
+  name: "createTask",
+  layout: "createTask",
+  components: {
+    Logo,
+    LoginForm,
+    TaskForm
+  },
+  computed: {
+    userLoged() {
+      return false;
     }
   }
+};
 </script>
 <style scoped>
 .main {

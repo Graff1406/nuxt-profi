@@ -12,7 +12,14 @@
       ></v-text-field>
     </template>
     <template v-else>
-      <input v-model="search" type="text" ref="field" class="input" placeholder="Find master" @keyup.enter="setLocalStorage">
+      <input
+        v-model="search"
+        type="text"
+        ref="field"
+        class="input"
+        placeholder="Find master"
+        @keyup.enter="setLocalStorage"
+      />
       <v-btn v-if="search" icon @click="clearSearch">
         <v-icon>close</v-icon>
       </v-btn>
@@ -22,48 +29,47 @@
 <script>
 // var localStorage = require('localStorage')
 // import VueLocalStorage from 'vue-localstorage'
-  export default {
-    name: 'MainSearch',
-    props: {
-      focus: Boolean,
-      solo: Boolean,
-      vallue: String
-    },
-    data() {
-      return {
-        search: null,
+export default {
+  name: "MainSearch",
+  props: {
+    focus: Boolean,
+    solo: Boolean,
+    value: String
+  },
+  data() {
+    return {
+      search: null
+    };
+  },
+  watch: {
+    focus(focus) {
+      if (focus) {
+        this.focusField();
+        this.getHistory();
       }
     },
-    watch: {
-      focus(focus) {
-        if (focus) {
-          this.focusField()
-          this.getHistory()
-        }
-      },
-      vallue(vallue) {
-        this.search = vallue
-      }
-    },
-    mounted() {
-      this.focusField()
-
-    },
-    methods: {
-      clearSearch() {
-        this.search = null
-        this.$refs.field.focus()
-      },
-      focusField() {
-        // this.$nextTick().then(() => this.$refs.field.focus())
-        setTimeout(() => this.$refs.field.focus(), 300)
-      },
-      getHistory() {
-        console.log('getHistory')
-      },
-      setLocalStorage() {}
+    value(value) {
+      this.search = value;
     }
+  },
+  mounted() {
+    this.focusField();
+  },
+  methods: {
+    clearSearch() {
+      this.search = null;
+      this.$refs.field.focus();
+    },
+    focusField() {
+      // this.$nextTick().then(() => this.$refs.field.focus())
+      setTimeout(() => this.$refs.field.focus(), 300);
+    },
+    getHistory() {
+      console.log("getHistory");
+    },
+    setLocalStorage() {}
   }
+};
 </script>
 <style scoped>
 .input {

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-card class="ma-2" max-width="374" @click="moveToDetales" nuxt>
-      <v-img
+    <v-card @click="moveToDetales" nuxt outlined>
+      <!-- <v-img
         height="180"
         src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-      ></v-img>
+      ></v-img> -->
       <v-app-bar absolute color="transparent" elevation="0">
         <v-spacer></v-spacer>
         <BtnsFavoriteAndShare
@@ -27,7 +27,7 @@
         </v-row>
 
         <div class="my-4 text-subtitle-1">
-          <v-avatar size="36px">
+          <v-avatar size="45">
             <img
               alt="Avatar"
               src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"

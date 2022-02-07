@@ -1,26 +1,28 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <v-btn icon @click="$router.go(-1)">
-        <v-icon>arrow_back_ios</v-icon>
-      </v-btn>
+    <v-app-bar v-if="$device.isMobile" app>
+      <span class="mx-2">
+        <AppBtnBack />
+      </span>
       <v-toolbar-title>PROFI</v-toolbar-title>
     </v-app-bar>
     <v-main>
       <v-container fluid>
-      <Nuxt />
+        <Nuxt />
       </v-container>
     </v-main>
     <!-- <BottomNavigation v-if="$device.isMobile" /> -->
   </v-app>
 </template>
 <script>
-import BottomNavigation from '@/components/BottomNavigation'
+import BottomNavigation from "@/components/BottomNavigation";
+import AppBtnBack from "@/components/buttons/Back";
 
-  export default {
-    name: 'createTask',
-    components: {
-      BottomNavigation
-    }
+export default {
+  name: "createTask",
+  components: {
+    BottomNavigation,
+    AppBtnBack
   }
+};
 </script>

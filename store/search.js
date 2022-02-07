@@ -1,9 +1,13 @@
 export const state = () => ({
-  titleForResult: ''
-})
+  titleForResult: "",
+  queries: {}
+});
 
 export const mutations = {
   setTitleForResult(state, title) {
-    state.titleForResult = title
+    state.titleForResult = title;
+  },
+  setUrlQueries(state, queries) {
+    state.queries = queries;
   }
-}
+};
