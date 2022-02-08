@@ -35,14 +35,14 @@
 </template>
 <script>
 import MainSearch from "../components/search/MainSearch.vue";
-import SearchModal from "@/components/search/modal/SearchModal";
+// import SearchModal from "@/components/search/modal/SearchModal";
 import BottomNavigation from "@/components/BottomNavigation";
 import Logo from "@/components/Logo";
 
 export default {
   name: "default",
   components: {
-    SearchModal,
+    // SearchModal,
     BottomNavigation,
     Logo,
     MainSearch

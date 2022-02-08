@@ -4,7 +4,7 @@
       v-for="title in histories"
       :key="title"
       :title="title"
-      @chosen-history="chosenHistory"
+      @chosen-history="moveToResult"
     />
   </div>
 </template>
@@ -12,6 +12,10 @@
 import MainSearch from "@/components/search/MainSearch";
 import SearchHistoryList from "@/components/search/SearchHistoryList";
 import AppBtnBack from "@/components/buttons/Back";
+
+// Mixins
+import moveToResult from "@/mixins/moveToResult";
+
 export default {
   name: "SearchModal",
   layout: "search",
@@ -53,13 +57,7 @@ export default {
     }
   },
   methods: {
-    chosenHistory(title) {
-      this.$router.push({
-        name: "index",
-        params: { title },
-        query: { search: title }
-      });
-    }
+    moveToResult
   }
 };
 </script>

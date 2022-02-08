@@ -4,7 +4,7 @@
       {{ title }}
     </v-card-title>
     <v-card-text class="text-1">
-      {{ text }}
+      <slot name="text"></slot>
     </v-card-text>
     <v-card-actions>
       <slot name="actions"></slot>
@@ -16,7 +16,6 @@ export default {
   name: "Banner",
   props: {
     title: String,
-    text: String,
     cardColor: String,
     cardWidth: [String, Number]
   }

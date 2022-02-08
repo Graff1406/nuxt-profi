@@ -55,20 +55,20 @@
     </v-navigation-drawer>
     <v-main>
       <v-row justify="center" class="mt-5">
-        <span class="font-weight-medium">PROFI</span>
+        <Logo show-icon />
       </v-row>
       <v-row justify="center" align="center" class="mt-5">
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
-            <v-btn icon nuxt to="/" v-bind="attrs" v-on="on">
-              <v-icon>home</v-icon>
+            <v-btn icon color="black" v-bind="attrs" v-on="on">
+              <v-icon>map</v-icon>
             </v-btn>
           </template>
-          <span>Home</span>
+          <span>Show map</span>
         </v-tooltip>
         <v-col cols="6">
           <v-text-field
-            :value="$route.params.title"
+            :value="$route.query.search"
             name="name"
             placeholder="Find master"
             id="id"
@@ -114,34 +114,17 @@
       </v-container>
       <SearchModal :active.sync="dialog" />
     </v-main>
-    <v-tooltip top>
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          color="black"
-          icon
-          bottom
-          fixed
-          right
-          fab
-          dark
-          small
-          v-bind="attrs"
-          v-on="on"
-        >
-          <v-icon>map</v-icon>
-        </v-btn>
-      </template>
-      <span>Show on map</span>
-    </v-tooltip>
   </v-app>
 </template>
 <script>
+import Logo from "../components/Logo.vue";
 import SearchModal from "@/components/search/modal/SearchModal";
 
 export default {
   name: "resultDesktop",
   components: {
-    SearchModal
+    SearchModal,
+    Logo
   },
   data() {
     return {

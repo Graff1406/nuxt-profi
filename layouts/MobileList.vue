@@ -1,8 +1,10 @@
 <template>
   <v-app>
     <v-app-bar app color="white" hide-on-scroll>
-      <v-toolbar-title>{{ $route.query.search }}</v-toolbar-title>
-      <!-- <v-toolbar-title>{{ $store.state.search.titleForResult }}</v-toolbar-title> -->
+      <v-toolbar-title v-if="$route.query.search">{{
+        $route.query.search
+      }}</v-toolbar-title>
+      <Logo v-else without-link />
 
       <v-spacer></v-spacer>
 
@@ -36,12 +38,14 @@
   </v-app>
 </template>
 <script>
+import Logo from "@/components/Logo.vue";
 import BottomNavigation from "@/components/BottomNavigation.vue";
 
 export default {
-  name: "ListMobileLayout",
+  name: "MobileListLayout",
   components: {
-    BottomNavigation
+    BottomNavigation,
+    Logo
   },
   data() {
     return {

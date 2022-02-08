@@ -45,7 +45,6 @@ export default {
     focus(focus) {
       if (focus) {
         this.focusField();
-        this.getHistory();
       }
     },
     value(value) {
@@ -63,11 +62,7 @@ export default {
     focusField() {
       // this.$nextTick().then(() => this.$refs.field.focus())
       setTimeout(() => this.$refs.field.focus(), 300);
-    },
-    getHistory() {
-      console.log("getHistory");
-    },
-    setLocalStorage() {}
+    }
   }
 };
 </script>
