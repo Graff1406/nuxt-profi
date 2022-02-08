@@ -21,7 +21,7 @@
         >
           <template #actions>
             <div class="ml-2 mb-2">
-              <v-btn color="#5b5a5a" outlined to="/create-task"
+              <v-btn color="#5b5a5a" outlined to="/create-task?step=0"
                 >Create task</v-btn
               >
             </div>

@@ -4,7 +4,7 @@
       <v-card
         :outlined="$device.isDesktop"
         :flat="$device.isMobile"
-        :height="windowSize.y - 80"
+        :height="windowSize.y - 90"
         class="d-flex flex-column justify-space-between"
       >
         <v-card-text class="pa-0">
@@ -17,7 +17,7 @@
           <v-window v-model="step">
             <v-window-item :value="0">
               <v-card flat>
-                <v-card-title primary-title>
+                <v-card-title primary-title v-if="!$device.isMobile">
                   Detiles of task
                 </v-card-title>
                 <v-card-text>
@@ -42,7 +42,7 @@
             </v-window-item>
             <v-window-item :value="1">
               <v-card flat>
-                <v-card-title primary-title>
+                <v-card-title primary-title v-if="!$device.isMobile">
                   Place of execute of task
                 </v-card-title>
                 <v-card-text>
@@ -72,7 +72,7 @@
             </v-window-item>
             <v-window-item :value="2">
               <v-card flat>
-                <v-card-title primary-title>
+                <v-card-title primary-title v-if="!$device.isMobile">
                   Date and time of execute of task
                 </v-card-title>
                 <v-card-text>
@@ -131,7 +131,7 @@
             </v-window-item>
             <v-window-item :value="3" v-if="!userLoged">
               <v-card flat>
-                <v-card-title primary-title>
+                <v-card-title primary-title v-if="!$device.isMobile">
                   {{
                     showTelForm ? "Add phone number" : "Sign In before Publish"
                   }}
@@ -161,7 +161,7 @@
             </v-window-item>
             <v-window-item :value="userLoged ? 3 : 4">
               <v-card flat>
-                <v-card-title primary-title>
+                <v-card-title primary-title v-if="!$device.isMobile">
                   Preview and Publish Task
                 </v-card-title>
                 <v-card-text>
@@ -225,11 +225,15 @@
             <v-icon>add</v-icon>
           </v-btn>
         </v-card-actions>
-        <v-card-actions v-else>
-          <v-btn dark depressed block @click="setStep">
-            Continue
-            <v-icon>arrow_forward_ios</v-icon>
-          </v-btn>
+        <v-card-actions v-else class="pa-0">
+          <div class="toolbar__fixed-bottom">
+            <v-toolbar bottom>
+              <v-btn dark depressed block @click="setStep">
+                Continue
+                <v-icon>arrow_forward_ios</v-icon>
+              </v-btn>
+            </v-toolbar>
+          </div>
           <!-- <v-spacer></v-spacer>
           <v-btn
             v-if="step < 3 || step < 4 && !userLoged"
@@ -301,7 +305,8 @@ export default {
   },
   watch: {
     $route(to, from) {
-      if (to.query.step < from.query.step) this.step--;
+      const queryStep = +to.query.step;
+      if (queryStep < this.step) this.step -= 1;
     }
   },
   // created() {
@@ -322,3 +327,11 @@ export default {
   }
 };
 </script>
+<style>
+.toolbar__fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+</style>

@@ -42,7 +42,7 @@ export default {
       navBar: {
         home: "index",
         search: "search",
-        createTask: "create-task",
+        createTask: "create-task?step=0",
         login: "login"
       }
     };
