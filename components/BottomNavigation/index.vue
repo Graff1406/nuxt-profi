@@ -8,28 +8,33 @@
     app
     :hide-on-scroll="hideOnScroll"
   >
-    <v-btn nuxt :to="{ path: '/', query: queries }" :value="navBar.home">
+    <v-btn
+      nuxt
+      :to="{ path: navBar.home.path, query: queries }"
+      :value="navBar.home.name"
+    >
       <span>List</span>
       <v-icon>list</v-icon>
     </v-btn>
 
-    <v-btn nuxt :to="`/${navBar.search}`" :value="navBar.search">
+    <v-btn nuxt :to="navBar.search.path" :value="navBar.search.name">
       <span>Search</span>
       <v-icon>search</v-icon>
     </v-btn>
 
-    <v-btn nuxt :to="`/${navBar.createTask}`" :value="navBar.createTask">
+    <v-btn nuxt :to="navBar.createTask.path" :value="navBar.createTask.name">
       <span>Add task</span>
       <v-icon>add_circle_outline</v-icon>
     </v-btn>
 
-    <v-btn nuxt :to="`/${navBar.login}`" :value="navBar.login">
+    <v-btn nuxt :to="navBar.login.path" :value="navBar.login.name">
       <span>Person</span>
       <v-icon>person</v-icon>
     </v-btn>
   </v-bottom-navigation>
 </template>
 <script>
+import navBar from "./routersForNav";
 export default {
   name: "BottomNavigation",
   props: {
@@ -39,12 +44,7 @@ export default {
   data() {
     return {
       value: this.$route.name,
-      navBar: {
-        home: "index",
-        search: "search",
-        createTask: "create-task?step=0",
-        login: "login"
-      }
+      navBar
     };
   },
   computed: {

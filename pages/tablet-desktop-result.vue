@@ -12,9 +12,7 @@ export default {
   middleware({ route, redirect, $device }) {
     if ($device.isMobile) redirect({ path: "/", query: route.query });
   },
-  layout(context) {
-    return context.$device.isMobile ? "resultMobile" : "resultDesktop";
-  },
+  layout: "TabletDesktopSearchResult",
   components: {
     TileForDesktop
   }

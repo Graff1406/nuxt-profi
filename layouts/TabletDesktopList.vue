@@ -78,7 +78,10 @@
         </v-row>
 
         <v-row justify="center" class="py-3">
-          <v-btn color="secondary" outlined to="/search?search=all"
+          <v-btn
+            color="secondary"
+            outlined
+            to="/tablet-desktop-result?search=all"
             >See All</v-btn
           >
         </v-row>

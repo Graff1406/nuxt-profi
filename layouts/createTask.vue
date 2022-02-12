@@ -15,7 +15,7 @@
   </v-app>
 </template>
 <script>
-import BottomNavigation from "@/components/BottomNavigation";
+import BottomNavigation from "@/components/BottomNavigation/index";
 import AppBtnBack from "@/components/buttons/Back";
 
 export default {

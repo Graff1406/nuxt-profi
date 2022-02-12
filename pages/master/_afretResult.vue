@@ -52,7 +52,8 @@ import PicsSlider from "@/components/profile/afterResult/PicsSlider";
 import Content from "@/components/profile/afterResult/Content";
 export default {
   name: "AfretResult",
-  layout: "toMasterAfterResult",
+  layout: ({ $device }) =>
+    $device.isMobile ? "MobileMasterProfile" : "TabletDesktopMasterProfile",
   components: { Content, PicsSlider },
   data() {
     return {

@@ -9,7 +9,7 @@
   </v-app>
 </template>
 <script>
-import BottomNavigation from "@/components/BottomNavigation";
+import BottomNavigation from "@/components/BottomNavigation/index";
 
 export default {
   name: "MobileTabletDesktopLogin",

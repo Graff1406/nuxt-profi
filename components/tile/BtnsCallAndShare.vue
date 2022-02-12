@@ -1,13 +1,17 @@
 <template>
-  <div>
-    <v-btn color="secondary" text @click="call = true">
-      <v-icon class="mr-3">phone_in_talk</v-icon>
-      Call
-    </v-btn>
-    <v-btn color="secondary" text @click="openChat = true">
-      <v-icon class="mr-3">question_answer</v-icon>
-      Chat
-    </v-btn>
+  <v-row>
+    <v-col cols="6" class="d-flex justify-center">
+      <v-btn color="secondary" text @click="call = true">
+        <v-icon class="mr-3">phone_in_talk</v-icon>
+        Call
+      </v-btn>
+    </v-col>
+    <v-col cols="6" class="d-flex justify-center">
+      <v-btn color="secondary" text @click="openChat = true">
+        <v-icon class="mr-3">question_answer</v-icon>
+        Chat
+      </v-btn>
+    </v-col>
     <v-bottom-sheet v-model="call" inset>
       <v-sheet
         class="text-center"
@@ -23,7 +27,7 @@
       </v-sheet>
     </v-bottom-sheet>
     <Chat v-model="openChat" />
-  </div>
+  </v-row>
 </template>
 <script>
 import Chat from "@/components/Chat";

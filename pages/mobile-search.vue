@@ -18,7 +18,7 @@ import moveToResult from "@/mixins/moveToResult";
 
 export default {
   name: "SearchModal",
-  layout: "search",
+  layout: "MobileSearch",
   components: {
     MainSearch,
     SearchHistoryList,

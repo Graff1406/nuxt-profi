@@ -39,7 +39,7 @@
 </template>
 <script>
 import Logo from "@/components/Logo.vue";
-import BottomNavigation from "@/components/BottomNavigation.vue";
+import BottomNavigation from "@/components/BottomNavigation/index";
 
 export default {
   name: "MobileListLayout",

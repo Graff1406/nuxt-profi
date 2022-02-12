@@ -2,7 +2,9 @@
   <div>
     <v-btn
       :color="color"
+      :small="small"
       icon
+      class="mx-1"
       @mouseenter="preventGoToMaster(true)"
       @mouseleave="preventGoToMaster(false)"
       @click="favoriteAdded = !favoriteAdded"
@@ -11,7 +13,9 @@
     </v-btn>
     <v-btn
       :color="color"
+      :small="small"
       icon
+      class="mx-1"
       @mouseenter="preventGoToMaster(true)"
       @mouseleave="preventGoToMaster(false)"
       @click="sheet = !sheet"
@@ -40,7 +44,8 @@ export default {
   name: "BtnsFavoriteAndShare",
   props: {
     color: String,
-    default: "white"
+    default: "white",
+    small: Boolean
   },
   data() {
     return {

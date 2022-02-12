@@ -52,9 +52,9 @@
       <SearchModal :active.sync="dialog" />
     </v-main>
     <v-app-bar bottom fixed elevation="2" color="white" dark>
-      <v-row justify="center" class="pa-0">
+      <v-row class="pa-0" no-wrap>
         <v-col cols="8">
-          <v-row>
+          <v-row justify="space-between">
             <v-col cols="6" class="pa-0">
               <BtnsFavoriteAndShare color="secondary" />
             </v-col>

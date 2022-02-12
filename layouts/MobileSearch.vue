@@ -36,11 +36,11 @@
 <script>
 import MainSearch from "../components/search/MainSearch.vue";
 // import SearchModal from "@/components/search/modal/SearchModal";
-import BottomNavigation from "@/components/BottomNavigation";
+import BottomNavigation from "@/components/BottomNavigation/index";
 import Logo from "@/components/Logo";
 
 export default {
-  name: "default",
+  name: "MobileSearch",
   components: {
     // SearchModal,
     BottomNavigation,

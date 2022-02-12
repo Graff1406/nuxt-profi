@@ -121,7 +121,7 @@ import Logo from "../components/Logo.vue";
 import SearchModal from "@/components/search/modal/SearchModal";
 
 export default {
-  name: "resultDesktop",
+  name: "TabletDesktopSearchResult",
   components: {
     SearchModal,
     Logo
